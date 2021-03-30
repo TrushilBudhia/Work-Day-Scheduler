@@ -16,7 +16,6 @@ var displayDate = moment();
 currentDay.text(displayDate.format('dddd, MMMM Do YYYY'));
 
 var workSchedulerHours = [9, 10, 11, 12, 13, 14, 15, 16, 17];
-var tableEntryObject = {};
 
 // Using a for loop to cycle through the length of the workSchedulerHours (9am - 5pm)
 for(i = 0; i < workSchedulerHours.length; i++) {
@@ -68,6 +67,15 @@ for(i = 0; i < workSchedulerHours.length; i++) {
         hourColumnSecond.attr('style', 'background: #68ff80');
         console.log('Future hours ' + workSchedulerHours[i]);
     }
+
+    // Using an if and else statement to display the correct am and pm times for the working day
+    if(workSchedulerHours[i] < 12) {
+        hourColumnFirst.text(workSchedulerHours[i] + ' am');
+    } else if(workSchedulerHours[i] > 12) {
+        hourColumnFirst.text(workSchedulerHours[i] - 12 + ' pm');
+    } else {
+        hourColumnFirst.text(workSchedulerHours[i] + ' pm');
+    }
 }
 
 // Creating a function to add the inputed note from the user to the local storage
@@ -99,9 +107,5 @@ formSelect.keypress(function (event) {
         localStorage.setItem('enteredNote' + index, userInputNote);
     };
 });
-
-// TODO
-// Change the hours from 24hr format to am/pm format
-
 
 
