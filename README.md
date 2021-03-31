@@ -2,7 +2,9 @@
 
 ## Description
 
-A simple calendar application that allows a user to save events for each hour of the working day. 
+A simple calendar application that allows a user to save events for each hour of the working day.
+
+Clicking the save button or pressing Enter can save the text inputted as a note for the hour.
 
 ## Link
 
