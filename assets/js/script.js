@@ -14,7 +14,6 @@ var bodySelect = $('body');
 var headerSelect = $('h1');
 var currentDay = $('#currentDay');
 var currentHour = moment().format('H');
-console.log(currentHour);
 
 // Displaying the current date in the paragraph tag with the id currentDay
 var displayDate = moment();
@@ -39,10 +38,10 @@ for(i = 0; i < workSchedulerHours.length; i++) {
     hourColumnFirst.attr('class', 'col-2 text-center border border-right-0 border-secondary h-100 pt-4');
     hourColumnFirst.text(workSchedulerHours[i]);
 
-    hourColumnSecond.attr('class', 'col-8 border border-secondary h-100');
+    hourColumnSecond.attr('class', 'col-8 border border-secondary h-100 p-0');
     hourForm.attr('class', 'h-100 w-100');
     hourForm.attr('data-hour-number', workSchedulerHours[i]);
-    hourTextArea.attr('class', 'border h-100 w-100');
+    hourTextArea.attr('class', 'border border-light h-100 w-100');
     hourTextArea.attr('id', 'textarea-' + workSchedulerHours[i]);
     hourTextArea.text(localStorage.getItem('enteredNote' + workSchedulerHours[i]));
 
@@ -67,19 +66,21 @@ for(i = 0; i < workSchedulerHours.length; i++) {
         console.log('Past hours ' + workSchedulerHours[i]);
     } else if(workSchedulerHours[i] == currentHour) {
         hourColumnSecond.attr('style', 'background: #ff6869');
+        hourTextArea.attr('placeholder', "Enter note for the current hour...");
         console.log('Current hour ' + workSchedulerHours[i]);
     } else {
         hourColumnSecond.attr('style', 'background: #68ff80');
+        hourTextArea.attr('placeholder', "Enter note for future hour...");
         console.log('Future hours ' + workSchedulerHours[i]);
     }
 
     // Using an if and else statement to display the correct am and pm times for the working day
     if(workSchedulerHours[i] < 12) {
-        hourColumnFirst.text(workSchedulerHours[i] + ' am');
+        hourColumnFirst.text(workSchedulerHours[i] + 'am');
     } else if(workSchedulerHours[i] > 12) {
-        hourColumnFirst.text(workSchedulerHours[i] - 12 + ' pm');
+        hourColumnFirst.text(workSchedulerHours[i] - 12 + 'pm');
     } else {
-        hourColumnFirst.text(workSchedulerHours[i] + ' pm');
+        hourColumnFirst.text(workSchedulerHours[i] + 'pm');
     }
 }
 
@@ -109,7 +110,6 @@ function saveUserInput() {
 // Adding a click event to the save button - saveUserInput function will be invoked
 var saveButton = $('.saveButton');
 saveButton.on('click', saveUserInput);
-
 
 // Adding a keypress event (for the Enter key) in the the form - inputed note from the user will be saved to the local storage
 var formSelect = $('form');

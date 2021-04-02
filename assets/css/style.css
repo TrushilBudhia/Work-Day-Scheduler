@@ -13,12 +13,27 @@ textarea{
   padding: 10px;
 }
 
+textarea::-webkit-input-placeholder {
+  font-style: italic;
+}
+textarea::-moz-placeholder {
+  font-style: italic;
+}
+
+textarea:-ms-input-placeholder {
+  font-style: italic;
+}
+
+textarea:-moz-placeholder {
+  font-style: italic;
+}
+
 .jumbotron {
   text-align: center;
-  background-color: transparent;
-  color: black;
+  background-color: #ff9950;
+  color: #272727;
   border-radius: 0;
-  border-bottom: 10px solid black;
+  border-bottom: 10px solid #272727;
 }
 
 .description{
