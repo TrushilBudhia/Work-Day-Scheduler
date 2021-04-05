@@ -63,15 +63,12 @@ for(i = 0; i < workSchedulerHours.length; i++) {
     // Using an if and else statement to check what hours are in the past, present and future. Styling each block with different backgroud colours depending on whether they are in the past, present or future
     if(workSchedulerHours[i] < currentHour) {
         hourColumnSecond.attr('style', 'background: #d3d3d3');
-        console.log('Past hours ' + workSchedulerHours[i]);
     } else if(workSchedulerHours[i] == currentHour) {
         hourColumnSecond.attr('style', 'background: #ff6869');
         hourTextArea.attr('placeholder', "Enter note for the current hour...");
-        console.log('Current hour ' + workSchedulerHours[i]);
     } else {
         hourColumnSecond.attr('style', 'background: #68ff80');
         hourTextArea.attr('placeholder', "Enter note for future hour...");
-        console.log('Future hours ' + workSchedulerHours[i]);
     }
 
     // Using an if and else statement to display the correct am and pm times for the working day
@@ -87,8 +84,6 @@ for(i = 0; i < workSchedulerHours.length; i++) {
 // Adding a top and bottom margin to the container section
 containerSelect.attr('class', 'container my-5');
 
-//headerSelect.attr('class', 'display-4')
-
 // Creating, styling and appending a FOOTER to the body section of the document
 var footerSection = $('<footer></footer>');
 footerSection.text("© Created by Trushil");
@@ -100,10 +95,6 @@ function saveUserInput() {
     var index = $(this).attr('data-hour-number');
     var textareaIndexSelect = $('#textarea-' + index);
     var userInputNote = textareaIndexSelect.val();
-    
-    console.log(index);
-    console.log(textareaIndexSelect);
-    console.log(userInputNote);
     localStorage.setItem('enteredNote' + index, userInputNote);
 }
 
